@@ -1,0 +1,126 @@
+{% extends 'App/base.html' %}
+{% load static %}
+{% block main-content %}
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Registraion Form</title>
+  <style> 
+
+
+
+    @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      display: ;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      background-color: #f7f8fc;
+      font-family: "Roboto", sans-serif;
+      color: #10182f;
+    }
+    .container {
+      display: flex;
+      width: 800px;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+    }
+    .card:hover{
+      box-shadow: 8px 8px 8px black;
+      transform:scale(1.2);
+  }
+
+
+
+    .card {
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow:  20px 20px rgba(10, 10, 10, 0.2);
+      overflow: hidden;
+      width: 3000px;
+      transition:.3s;
+      margin: 3rem;
+    }
+    .card-header img {
+      width: 800px;
+      height: 500px;
+      object-fit: ;
+    }
+    .card-body {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 65px;
+      min-height: 450px;
+    }
+    
+    .tag {
+      background: #cccccc;
+      border-radius: 50px;
+      font-size: 12px;
+      margin: 0;
+      color: #fff;
+      padding: 2px 10px;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .tag-teal {
+      background-color: #47bcd4;
+    }
+    .tag-purple {
+      background-color: #5e76bf;
+    }
+    .tag-pink {
+      background-color: #cd5b9f;
+    }
+    
+    .card-body p {
+      font-size: 13px;
+      margin: 0 0 40px;
+    }
+
+    
+    h1{
+      font-family:elephant;
+      text-align:center;
+      color:white;
+    }
+
+
+    
+    
+    
+    
+    </style>
+
+</head>
+  <body style="background-image:url('{% static 'App/img/car2.jpg'%}');"> 
+    
+  <h1>Vehicle Registraion Form</h1>
+
+
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <form action="" method="POST"  >
+          <table >
+            {% csrf_token %}
+          {{form.as_table}}
+          <td style="position:absolute; right:270px;  padding:15px; font-family: arial;"><input  type="submit" value="SUBMIT"></td>
+        </table>
+        
+        </form>
+  
+      </div>
+    </div>
+    </div>
+</body>
+{% endblock main-content %}

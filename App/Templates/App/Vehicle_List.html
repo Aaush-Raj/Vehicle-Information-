@@ -1,0 +1,46 @@
+{% extends "App/base.html" %} 
+ {% load static %}{% block main-content %}
+
+<div class="container">
+    <table class="table" table-borderless style=" margin-left:100px;float:center: width:200px;height:100px; color:black;">
+        <thead class="border-bottom" font-weight-bold>
+            <tr class="trtr">
+                <td style="font-weight: bold;  color: black;">Vehicle Name</td>
+                <td style="font-weight: bold;  color: black;">Speed</td>
+                <td style="font-weight: bold;  color: black;">Average Speed</td>
+                <td style="font-weight: bold;  color: black;">Temperature</td>
+                <td style="font-weight: bold;  color: black;">Fuel level </td>
+                <td style="font-weight: bold;  color: black;">Engine Status </td>
+                <td>
+                    <a href="{% url 'add_new' %}" class="btn btn-outline-success" style="font-weight: bold;  color: black; background-color:rgb(34, 87, 34);">
+                        <i class=" fas fa-plus "></i> Add New
+                    </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for v in vcl_list %}
+            <tr class="trtr">
+                <td><center>{{v.Vehicle_Name}}</center></td>
+                <td><center>{{v.Speed}}</center></td>
+                <td><center>{{v.Average_Speed}}</center></td>
+                <td><center>{{v.Temperature}}</center></td>
+                <td><center>{{v.Fuel_level}}</center></td>
+                <td><center>{{v.Engine_Status}}</center></td>
+                <td>
+                    <a href="{% url 'update_data' v.id %}" class="btn text-secondary px-0 ">
+                        <i class="far fa-edit fa-lg "></i>
+                    </a>
+                    <form action="{% url 'vehicle_delete' v.id %}" method="post" class="d-inline ">
+                        {% csrf_token %}
+                        <button class="submit btn ">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right "></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock main-content %}
